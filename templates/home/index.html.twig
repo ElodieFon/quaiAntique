@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}le quai antique / acceuil{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/home.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
-
+    <main class="mt-5 ">
+          {% include "base/header.html.twig" %}
+    </main>
 {% endblock %}

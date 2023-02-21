@@ -1,1 +1,6 @@
-/*# sourceMappingURL=style.css.map */
+main {
+  min-height: 100vh;
+}
+main header {
+  background-color: #dadada;
+}/*# sourceMappingURL=style.css.map */
