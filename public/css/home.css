@@ -1,1 +1,10 @@
-/*# sourceMappingURL=home.css.map */
+body {
+  background-image: url(../images/backgrounds/acceuil.jpg);
+}
+body main {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+body header > div {
+  background-color: rgba(0, 0, 0, 0.5);
+}/*# sourceMappingURL=home.css.map */
