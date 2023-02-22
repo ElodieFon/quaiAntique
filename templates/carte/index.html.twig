@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}le quai antique / carte{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/carte.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <main>
+        {% include "base/header.html.twig" %} 
+    </main>
+{% endblock %}
