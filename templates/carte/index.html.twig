@@ -8,5 +8,24 @@
 {% block body %}
     <main>
         {% include "base/header.html.twig" %} 
+
+            <div class="container-fluid d-flex flex-wrap justify-content-evenly">
+                {% for product in products %}
+                    <div class="card m-3 d-flex flex-row col-5 ">
+                        <div class="col-4 d-flex align-items-center">
+                            <img src="images/products/{{product.image}}" alt="{{product.name}}" style="width: 100%;"/>
+                        </div>
+                    
+                        <div class="card-body">
+                            <h3>{{product.name}}</h3>
+                            <p>{{product.prix}}</p>
+                            <button class="btn btn-primary">voir</button>
+                        </div>
+                        
+                    </div>
+
+                {% endfor %}
+            </div>
+            
     </main>
 {% endblock %}
