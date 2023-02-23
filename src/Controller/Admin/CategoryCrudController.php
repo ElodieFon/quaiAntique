@@ -24,29 +24,11 @@ class CategoryCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
             BooleanField::new('active'),
-            DateTimeField::new('updateAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
             DateTimeField::new('createdAt')->hideOnForm(),    
         ];
     }
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        if (!$entityInstance instanceof Category) return;
-
-        $entityInstance->setCreatedAt(new \DateTimeImmutable());
-
-        $entityInstance->setUpdateAt(new \DateTimeImmutable());
-
-        parent::persistEntity($entityManager , $entityInstance);
-    }
-
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        if (!$entityInstance instanceof Category) return;
-
-        $entityInstance->setUpdateAt(new \DateTimeImmutable());
-
-        parent::updateEntity($entityManager , $entityInstance);
-    }
+   
     public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         if (!$entityInstance instanceof Category) return;

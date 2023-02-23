@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -52,26 +53,12 @@ class ProductCrudController extends AbstractCrudController
             DateTimeField::new('updatedAt')->hideOnForm(), 
             BooleanField::new('active'),
             DateTimeField::new('createdAt')->hideOnForm(),    
-            AssociationField::new('category')
+            AssociationField::new('category')->setQueryBuilder(function (QueryBuilder $queryBuilder){
+                $queryBuilder->where('entity.active = true');
+            })
         ];
     }
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        if (!$entityInstance instanceof Product) return;
-
-        $entityInstance->setCreatedAt(new \DateTimeImmutable());
-
-        parent::persistEntity($entityManager , $entityInstance);
-    }
-
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        if (!$entityInstance instanceof Product) return;
-
-        $entityInstance->setUpdatedAt(new \DateTimeImmutable());
-
-        parent::updateEntity($entityManager , $entityInstance);
-    }
+  
     public function duplicateProduct(
         AdminContext $adminContext , 
         EntityManagerInterface $entityManager,

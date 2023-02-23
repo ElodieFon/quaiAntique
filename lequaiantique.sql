@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 23 fév. 2023 à 17:54
+-- Généré le : jeu. 23 fév. 2023 à 19:42
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.1.13
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `update_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -41,10 +41,10 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- Déchargement des données de la table `category`
 --
 
-INSERT INTO `category` (`id`, `nom`, `active`, `update_at`, `created_at`) VALUES
-(5, 'Plat', 1, '2023-02-23 17:38:50', '2023-02-23 14:59:31'),
-(6, 'Dessert', 1, '2023-02-23 17:39:01', '2023-02-23 14:59:41'),
-(7, 'Entrée', 1, '2023-02-23 17:42:47', '2023-02-23 17:01:38');
+INSERT INTO `category` (`id`, `nom`, `active`, `updated_at`, `created_at`) VALUES
+(5, 'Plat', 1, '2023-02-23 19:37:04', '2023-02-23 14:59:31'),
+(6, 'Dessert', 1, '2023-02-23 19:01:59', '2023-02-23 14:59:41'),
+(7, 'Entrée', 1, '2023-02-23 19:40:08', '2023-02-23 17:01:38');
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,8 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20230223065340', '2023-02-23 06:53:48', 71),
-('DoctrineMigrations\\Version20230223140105', '2023-02-23 14:01:19', 141);
+('DoctrineMigrations\\Version20230223140105', '2023-02-23 14:01:19', 141),
+('DoctrineMigrations\\Version20230223193927', '2023-02-23 19:39:38', 19);
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D34A04AD12469DE2` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `product`
@@ -122,7 +123,7 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `description`, `prix`, `imag
 (5, 5, 'salade fruits de mer', '<div>La salade César est une recette de cuisine de salade composée de la cuisine américaine, traditionnellement préparée en salle à côté de la table, à base de laitue romaine, œuf dur, croûtons, ...</div>', '650.00', 'anna-pelzer-IGfIGP5ONV0-unsplash (1).jpg', NULL, 1, '2023-02-23 17:46:14'),
 (6, 5, 'bœuf bourguignon', '<div>Le bœuf bourguignon est une recette de cuisine d\'estouffade de bœuf, traditionnelle de la cuisine bourguignonne, en France. Cuisinée au vin rouge de Bourgogne, avec une garniture de champignons, de petits oignons et de lardons, ses variations d\'accompagnement sont multiples.</div>', '1500.00', 'farhad-ibrahimzade-TvMWBS6TIsg-unsplash (1).jpg', '2023-02-23 17:48:11', 1, '2023-02-23 17:47:54'),
 (7, 5, 'blanquette de veaux', '<div>La blanquette, ou blanquette de veau ou blanquette de veau à l\'ancienne, est une recette de cuisine traditionnelle de cuisine française, à base de viande de veau cuite dans un bouillon avec carotte, poireau, oignon et bouquet garni, liée en sauce blanche à la crème et au beurre et aux champignons de Paris.</div>', '1500.00', 'farhad-ibrahimzade-KpOl9jV2aJM-unsplash (1).jpg', NULL, 1, '2023-02-23 17:49:15'),
-(8, 5, 'sautée de fruit de mer', '<div>Sautés, grillés, poêlés, en brochettes ou en fricassées, les fruits de mer révèlent leurs saveurs lorsqu’ils sont juste saisis ! Accompagnés de sauces aux fruits, de champignons ou de légumes, d’épices ou d’herbes, les gambas, calamars, moules ou crevettes n’en sont que meilleurs !</div>', '1500.00', 'farhad-ibrahimzade-HNmcgpzPHag-unsplash.jpg', NULL, 1, '2023-02-23 17:50:41');
+(8, 5, 'sautée de fruit de mer', '<div>Sautés, grillés, poêlés, en brochettes ou en fricassées, les fruits de mer révèlent leurs saveurs lorsqu’ils sont juste saisis ! Accompagnés de sauces aux fruits, de champignons ou de légumes, d’épices ou d’herbes, les gambas, calamars, moules ou crevettes n’en sont que meilleurs !</div>', '1500.00', 'farhad-ibrahimzade-HNmcgpzPHag-unsplash.jpg', '2023-02-23 19:32:13', 1, '2023-02-23 17:50:41');
 
 -- --------------------------------------------------------
 
