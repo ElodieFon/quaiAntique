@@ -3,11 +3,94 @@ header {
   margin-top: 5vh;
 }
 
+.conteneur-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.conteneur-tabs input[name=tabs] {
+  display: none;
+}
+.conteneur-tabs input[name=tabs]:checked + label {
+  background-color: #2a9399;
+  color: #fff;
+}
+.conteneur-tabs input[name=tabs]:checked + label + .panel {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.conteneur-tabs .label {
+  width: 100%;
+  background: #fff;
+  color: #2a9499;
+  border: 1px solid #2a9499;
+  padding: 2vh;
+  font-size: 25px;
+  text-align: center;
+}
+.conteneur-tabs .label:hover {
+  background: #2a9499;
+  color: #fff;
+}
+.conteneur-tabs .panel {
+  display: none;
+  padding: 2vh;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.conteneur-tabs .panel .card {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.conteneur-tabs .panel .card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+}
+
 @media screen and (min-width: 900px) {
   body {
     background-image: url(../images/backgrounds/menu.jpg);
   }
   body header {
     background-image: none;
+  }
+  .conteneur-tabs .label {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    width: 19.5rem;
+    border: 1px solid #2a9499;
+    background: #ffffff;
+    color: #2a9499;
+    padding: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .conteneur-tabs .panel {
+    order: 1 !important;
+    width: 60rem;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    min-height: 25vh;
+    height: -moz-fit-content;
+    height: fit-content;
+    border-top: transparent;
+  }
+  .conteneur-tabs .panel .card {
+    width: 600px;
+    min-height: 25vh;
+    border-radius: 0.5rem;
   }
 }/*# sourceMappingURL=carte.css.map */
