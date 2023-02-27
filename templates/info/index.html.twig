@@ -9,5 +9,20 @@
 {% block body %}
     <main class="mt-5 ">
           {% include "base/header.html.twig" %}
+            {% for article in articles %}
+                {% if article.active == 1 %}
+                <div class="">
+                    <div class="d-flex p-4 mb-4 flex-wrap article align-items-center justify-content-center {% if article.inverse == 1 %} flex-row-reverse {% endif %}">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img src="images/articles/{{article.image}}" alt="{{article.name}}"/>
+                        </div>
+                        <div class="p-4 block-text">
+                            <h3 class=" text-capitalize ">{{article.name}}</h3>
+                           <p class="d-flex flex-row-reverse  ">{{article.description }}</p>  
+                        </div>
+                    </div>
+                </div>  
+                {% endif %}
+            {% endfor %}   
     </main>
 {% endblock %}
