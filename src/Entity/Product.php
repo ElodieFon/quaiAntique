@@ -39,6 +39,9 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $productOfMoment = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function isProductOfMoment(): ?bool
+    {
+        return $this->productOfMoment;
+    }
+
+    public function setProductOfMoment(?bool $productOfMoment): self
+    {
+        $this->productOfMoment = $productOfMoment;
 
         return $this;
     }
