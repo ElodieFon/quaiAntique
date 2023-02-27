@@ -50,10 +50,11 @@ class ProductCrudController extends AbstractCrudController
             ->setBasePath(('images/products'))
             ->setUploadDir('public/images/products')
             ->setSortable(false),
-            DateTimeField::new('updatedAt')->hideOnForm(), 
-            BooleanField::new('active'),
-            DateTimeField::new('createdAt')->hideOnForm(),    
-            AssociationField::new('category')->setQueryBuilder(function (QueryBuilder $queryBuilder){
+            BooleanField::new('active', 'produit en cour'),
+            BooleanField::new('productOfMoment', 'produits du moment'),
+            DateTimeField::new('createdAt', 'date de création')->hideOnForm(),  
+            DateTimeField::new('updatedAt', 'date dernière modif')->hideOnForm(),    
+            AssociationField::new('category', 'categorie')->setQueryBuilder(function (QueryBuilder $queryBuilder){
                 $queryBuilder->where('entity.active = true');
             })
         ];
