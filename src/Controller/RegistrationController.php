@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\HoraireRepository;
+use App\Repository\InfoRestoRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -26,8 +28,15 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(
+        HoraireRepository $horaire ,
+        InfoRestoRepository $infoResto,
+        Request $request, 
+        UserPasswordHasherInterface $userPasswordHasher, 
+        EntityManagerInterface $entityManager): Response
     {
+        $infosResto = $infoResto->findAll();
+        $horaires = $horaire->findAll();
         $titlePage = "inscrivez vous";
         $subtitle = "";
         $user = new User();
@@ -60,6 +69,8 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
+            'infosResto'=>$infosResto,
+            'horaires' => $horaires,
             'titlePage'=>$titlePage , 
             'subtitle' => $subtitle ,
             'registrationForm' => $form->createView(),
