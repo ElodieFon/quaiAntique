@@ -1,6 +1,17 @@
 header {
   background-image: url(../images/backgrounds/chef.jpg);
-  margin-top: 5vh;
+}
+
+main .article img {
+  width: 100%;
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .article .block-text p {
+  font-size: 16px;
+  text-align: justify;
+  word-spacing: -2px;
 }
 
 @media screen and (min-width: 900px) {
@@ -9,5 +20,28 @@ header {
   }
   body header {
     background-image: none;
+  }
+  body main .article {
+    max-width: 1280px;
+    margin: auto;
+  }
+  body main .article > div {
+    flex: 1 1;
+    color: white;
+  }
+  body main .article img {
+    min-height: 400px;
+  }
+  body main .article .block-text {
+    background-color: black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 400px;
+  }
+  body main .article .block-text h3 {
+    width: 100%;
   }
 }/*# sourceMappingURL=info.css.map */

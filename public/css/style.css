@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Old+Standard+TT:wght@400;700&display=swap");
 body * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,20 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+body h1, body h2, body h3 {
+  font-family: "Old Standard TT", serif;
+}
+body p, body label, body a, body button, body li {
+  font-family: "Lora", serif;
+  font-size: 16px;
+}
+body li {
+  list-style: none;
+  margin-bottom: 0.5vh;
+}
+body button, body .btn {
+  text-transform: capitalize;
+}
 
 main {
   min-height: 100vh;
@@ -19,6 +34,7 @@ main header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  margin-top: 10vh;
 }
 main header h2, main header h3 {
   font-family: "Old Standard TT", serif;
