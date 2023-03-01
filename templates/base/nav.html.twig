@@ -8,23 +8,23 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav d-flex justify-content-evenly col-12">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Acceuil</a>
+                    <a class="nav-link" href="{{ path('app_home') }}">Acceuil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/carte">Carte</a>
+                    <a class="nav-link" href="{{ path('app_carte') }}">Carte</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="/reservation">Reservation</a>
+                    <a class="nav-link" href="{{ path('app_reservation') }}">Reservation</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="{{ path('app_contact') }}">Contact</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="/info">A propo</a>
+                    <a class="nav-link" href="{{ path('app_info') }}">A propo</a>
                 </li>
                 <li>
-                    <a class="btn btn-success" href="/login"> connecter</a>
-                    <a class="btn btn-danger" href="/logout"> déconnecter</a>
+                    <a class="btn btn-success" href="{{ path('app_login') }}"> connecter</a>
+                    <a class="btn btn-danger" href="{{ path('app_logout') }}"> déconnecter</a>
                 </li>
             </ul>
         </div>

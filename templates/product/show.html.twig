@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheet %}
+{% block title %}le quai antique / carte -> {{product.name}} {% endblock %}
+{% block stylesheets %}
     {{ parent() }}
-    
+    <link href="{{ asset('css/carte.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
-{% block title %}carte / {{product.name}}{% endblock %}
+
 
 {% block body %}
     <main>
