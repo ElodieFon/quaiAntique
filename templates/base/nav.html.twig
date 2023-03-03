@@ -23,8 +23,14 @@
                     <a class="nav-link" href="{{ path('app_info') }}">A propo</a>
                 </li>
                 <li>
-                    <a class="btn btn-success" href="{{ path('app_login') }}"> connecter</a>
-                    <a class="btn btn-danger" href="{{ path('app_logout') }}"> déconnecter</a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY')  %} 
+                        <a class="btn btn-danger" href="{{ path('app_logout') }}"> déconnecter</a>
+                        {% else %} 
+                            <a class="btn btn-success" href="{{ path('app_login') }}"> connexion</a>
+                            <a class="btn btn-warning" href="{{ path('app_register') }}"> s'inscrire</a>
+                    {% endif %}
+                    
+                    
                 </li>
             </ul>
         </div>
