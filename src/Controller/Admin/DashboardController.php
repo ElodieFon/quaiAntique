@@ -7,6 +7,8 @@ use App\Entity\Category;
 use App\Entity\Horaire;
 use App\Entity\InfoResto;
 use App\Entity\Product;
+use App\Entity\Reservation;
+use App\Entity\ReservationHoraire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -14,6 +16,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 // TODO : faire la page connexion a la page admin
 class DashboardController extends AbstractDashboardController
 {
@@ -22,8 +26,10 @@ class DashboardController extends AbstractDashboardController
     }
     
     #[Route('/admin', name: 'admin')]
+    #[IsGranted("ROLE_ADMIN")]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $url = $this->adminUrlGenerator
         ->setController(ProductCrudController::class)
         ->generateUrl();
@@ -34,7 +40,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('QuaiAntique');
+            ->setTitle('Le Quai Antique');
     }
 
     public function configureMenuItems(): iterable
@@ -63,6 +69,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Articles','fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('add article', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('show articles', 'fas fa-eye', Article::class)
+        ]);
+        yield MenuItem::section('Gestion reservation');
+        yield MenuItem::subMenu('Heures','fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('add Heure', 'fas fa-plus', ReservationHoraire::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Heures', 'fas fa-eye', ReservationHoraire::class)
+        ]);
+        yield MenuItem::subMenu('Reservations','fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('add reservation', 'fas fa-plus', Reservation::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show reservations', 'fas fa-eye', Reservation::class)
         ]);
     }
 }
