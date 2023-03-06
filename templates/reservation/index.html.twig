@@ -1,19 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}le quai antique / reservation{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('css/reservation.css') }}" type="text/css" rel="stylesheet">
-{% endblock %}
+{% block title %}le quai antique / reservation {% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="{{ asset('css/reservation.css') }}" type="text/css" rel="stylesheet">
+    {% endblock %}
 
 {% block body %}
-    <main class="mt-5 ">
-          {% include "base/header.html.twig" %}
-
-            <div class=" col-5  bg-light  p-3 ">
-                {{ form_start(form) }}
-                  
-                {{ form_end(form) }}
-            </div>
+    <main>
+        {% include "base/header.html.twig" %} 
+            <div class=" col-5  bg-light  p-3 m-auto mb-5 mt-5">
+                {% if message is not empty %}
+                    {% if message == messageSuccess %}
+                        <p class="fs-4 bg-success text-light text-center p-2">
+                            {{message}} </br> 
+                            <a class="btn bg-light p-2 " href="{{path('app_home')}}">retourner à l'acceuil</a>
+                        </p>
+                        {% else %}
+                        <p class="fs-4 bg-warning p-2 text-center">{{message}}</p>
+                    {% endif %}
+                {% else %}
+                    <p class="fs-4 p-2 text-center">Pour reserver veuillez remplir le formulaire ci-dessous</p>
+                {% endif %}
+ 
+            {{ form_start(form) }}
+       
+            {{ form_rest(form) }}
+        </div>
     </main>
 {% endblock %}

@@ -34,16 +34,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
-    private Collection $reservations;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
+    private Collection $reservations;
 
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
     }
+
+ 
 
     public function getId(): ?int
     {
@@ -126,6 +129,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @return Collection<int, Reservation>
      */
@@ -154,21 +175,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-    public function __toString()
-    {
-        return $this->name;
     }
 }

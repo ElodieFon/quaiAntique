@@ -6,6 +6,7 @@ use App\Entity\ReservationHoraire;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 
 class ReservationHoraireCrudController extends AbstractCrudController
@@ -21,7 +22,8 @@ class ReservationHoraireCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TimeField::new('heure'),
-            BooleanField::new('active')
+            BooleanField::new('active'),
+            IntegerField::new('nbPlace')
         ];
     }
    

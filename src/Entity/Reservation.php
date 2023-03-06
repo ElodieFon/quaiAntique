@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,8 +16,17 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(length: 255)]
+    private ?string $nameClient = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column]
     private ?int $nbPersons = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?ReservationHoraire $heure = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $nbChildren = null;
@@ -24,67 +35,25 @@ class Reservation
     private ?string $comentaire = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $allergies = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date = null;
+    private ?bool $allergie = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?ReservationHoraire $heures = null;
-
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
+   
     public function getId(): ?int
     {
         return $this->id;
     }
-    public function getNbPersons(): ?int
+
+    public function getNameClient(): ?string
     {
-        return $this->nbPersons;
+        return $this->nameClient;
     }
 
-    public function setNbPersons(int $nbpersons): self
+    public function setNameClient(string $nameClient): self
     {
-        $this->nbPersons = $nbpersons;
-
-        return $this;
-    }
-
-    public function getComentaire(): ?string
-    {
-        return $this->comentaire;
-    }
-
-    public function setComentaire(?string $comentaire): self
-    {
-        $this->comentaire = $comentaire;
-
-        return $this;
-    }
-
-
-    public function getNbChildren(): ?int
-    {
-        return $this->nbChildren;
-    }
-
-    public function setNbChildren(?int $nbChildren): self
-    {
-        $this->nbChildren = $nbChildren;
-
-        return $this;
-    }
-
-    public function isAllergies(): ?bool
-    {
-        return $this->allergies;
-    }
-
-    public function setAllergies(bool $allergies): self
-    {
-        $this->allergies = $allergies;
+        $this->nameClient = $nameClient;
 
         return $this;
     }
@@ -101,14 +70,73 @@ class Reservation
         return $this;
     }
 
-    public function getHeures(): ?ReservationHoraire
+    public function getNbPersons(): ?int
     {
-        return $this->heures;
+        return $this->nbPersons;
     }
 
-    public function setHeures(?ReservationHoraire $heures): self
+    public function setNbPersons(int $nbPersons): self
     {
-        $this->heures = $heures;
+        $this->nbPersons = $nbPersons;
+
+        return $this;
+    }
+
+
+ 
+
+    
+    public function __toString()
+    {
+       
+        return $this->nameClient;
+        return $this->date->format('d-m-Y');
+    }
+
+    public function getHeure(): ?ReservationHoraire
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(?ReservationHoraire $heure): self
+    {
+        $this->heure = $heure;
+
+        return $this;
+    }
+
+    public function getNbChildren(): ?int
+    {
+        return $this->nbChildren;
+    }
+
+    public function setNbChildren(?int $nbChildren): self
+    {
+        $this->nbChildren = $nbChildren;
+
+        return $this;
+    }
+
+    public function getComentaire(): ?string
+    {
+        return $this->comentaire;
+    }
+
+    public function setComentaire(?string $comentaire): self
+    {
+        $this->comentaire = $comentaire;
+
+        return $this;
+    }
+
+    public function isAllergie(): ?bool
+    {
+        return $this->allergie;
+    }
+
+    public function setAllergie(?bool $allergie): self
+    {
+        $this->allergie = $allergie;
 
         return $this;
     }
@@ -123,9 +151,5 @@ class Reservation
         $this->user = $user;
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->date->format('d-m-Y');
     }
 }

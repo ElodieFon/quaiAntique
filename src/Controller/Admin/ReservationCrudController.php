@@ -4,14 +4,13 @@ namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ReservationCrudController extends AbstractCrudController
 {
@@ -20,19 +19,19 @@ class ReservationCrudController extends AbstractCrudController
         return Reservation::class;
     }
 
-   
+    
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            IntegerField::new('nbPersons'),
-            IntegerField::new('nbChildren'),
-            TextareaField::new('comentaire'),
-            BooleanField::new('allergies'),
+            TextField::new('nameClient', 'nom du client'),
             DateField::new('date'),
-            AssociationField::new('heures'),
-            AssociationField::new('user')->hideOnForm()
+            IntegerField::new('nbPersons', 'nombre de couverts'),
+            IntegerField::new('nbChildren', 'nombre d\'enfant'),
+            TextareaField::new('comentaire'),
+            BooleanField::new('allergie'),
+            AssociationField::new('heure', 'heure de reservation')
         ];
     }
-   
+    
 }

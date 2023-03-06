@@ -19,11 +19,16 @@ class ReservationHoraire
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $heure = null;
 
-    #[ORM\OneToMany(mappedBy: 'heures', targetEntity: Reservation::class)]
-    private Collection $reservations;
+   
 
     #[ORM\Column]
     private ?bool $active = null;
+
+    #[ORM\OneToMany(mappedBy: 'heure', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
+    #[ORM\Column]
+    private ?int $nbPlace = null;
 
     public function __construct()
     {
@@ -47,35 +52,7 @@ class ReservationHoraire
         return $this;
     }
 
-    /**
-     * @return Collection<int, Reservation>
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservation $reservation): self
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
-            $reservation->setHeures($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservation $reservation): self
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getHeures() === $this) {
-                $reservation->setHeures(null);
-            }
-        }
-
-        return $this;
-    }
+    
 
     public function isActive(): ?bool
     {
@@ -88,8 +65,51 @@ class ReservationHoraire
 
         return $this;
     }
+    
     public function __toString()
     {
-        return $this->heure->format('h:i');
+        return $this->heure->format('H:i');
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setHeure($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getHeure() === $this) {
+                $reservation->setHeure(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNbPlace(): ?int
+    {
+        return $this->nbPlace;
+    }
+
+    public function setNbPlace(int $nbPlace): self
+    {
+        $this->nbPlace = $nbPlace;
+
+        return $this;
     }
 }
