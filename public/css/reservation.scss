@@ -3,6 +3,12 @@ header {
     margin-top: 5vh;
     
 }
+.hidden {
+    display: none;
+}
+#reservation_user{
+    display: none;
+}
 @media screen and (min-width : 900px) {
     body {
         background-image: url(../images/backgrounds/reservation.jpg);
