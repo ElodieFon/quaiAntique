@@ -70,6 +70,9 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "sonata-project/intl-bundle": {
+        "version": "3.0.2"
+    },
     "symfony/console": {
         "version": "6.2",
         "recipe": {
