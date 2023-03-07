@@ -6,7 +6,6 @@ use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\HoraireRepository;
 use App\Repository\InfoRestoRepository;
-use App\Repository\ReservationHoraireRepository;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,8 +42,6 @@ class ReservationController extends AbstractController
         $reservation->setUser($user); 
         $reservationDate = "";
         $rDate = "";
-        $placesReservees = 0;
-
         $message = "";
         $messageSuccess= "";
 
@@ -57,31 +54,40 @@ class ReservationController extends AbstractController
             $reservations = $reservationRepository->findByDate($reservation->getDate()); 
             $reservationDate = $reservation->getDate()->format('d/m/Y');
             $reservationTime = $reservation->getHeure();
-            $placesOccupees =  $reservations->getReservations()->count();
-            $placesRestantes = $reservations->getNbPlace() - $placesOccupees;
-            return $placesRestantes > 0 ? $placesRestantes : 0;
+            $reservationChildren = $reservation->getNbChildren();
+            $reservationPersons = $reservation->getNbPersons();
+            $nbPersonsTotal = 0;
+            $nbPlace = $reservationTime->getNbplace();
+          
             $mailUser = $reservation->getUser()->getEmail();
             $messageSuccess = "Votre reservation pour le $reservationDate à $reservationTime a bien été enregistrée !"; 
-
+           
             foreach ($reservations as $r) {   
                 $rDate = $r->getDate()->format('d/m/Y'); 
                 $rTime = $r->getHeure();
-            }     
-           
-             if ($rDate == $reservationDate && $rTime == $reservationTime) {
-                    $message = "Navré nous n'avons pas de disponibilitée à cette heure pour le moment!"; 
-                } 
+                $nbPersonsTotal += $r->getNbPersons();    
+                 
+            }    
+            if($rDate == $reservationDate && $rTime == $reservationTime && $reservationPersons > ($nbPlace - $nbPersonsTotal)){
+                $message = "Navré nous n'avons pas de disponibilitée à cette heure pour le moment!"; 
+            }
+            elseif ($reservationChildren > $reservationPersons){
+                $message = "Le nombre de place demandé ne peut etre inférieur au nombre de personne presentes à la table.
+                Vous avez indiqué vouloir $reservationPersons couverts mais vous avez indiquer la présence de $reservationChildren enfants, 
+                ";
+            } 
             else{
                 $entityManager->persist($reservation);
                 $entityManager->flush(); 
                 $message = $messageSuccess; 
                 $email = (new Email())
-			    ->from('noreply.LequaiAntique@noreply.com')
-			    ->to($mailUser)
-			    ->subject('Confirmation de reservation')
-			    ->text($messageSuccess);
+                ->from('noreply.LequaiAntique@noreply.com')
+                ->to($mailUser)
+                ->subject('Confirmation de reservation')
+                ->text($messageSuccess);
                 $mailer->send($email);
-            }    
+            }       
+           
 		}
         return $this->render('reservation/index.html.twig', [
             'infosResto'=>$infosResto,
