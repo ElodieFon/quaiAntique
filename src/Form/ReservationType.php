@@ -40,11 +40,17 @@ class ReservationType extends AbstractType
         ])
         ->add('nbPersons',IntegerType::class, [
             'label'=> 'Nombre de couverts',
-            'required' => true
+            'required' => true,
+            'attr' => [
+                'min' => 1,
+            ]
         ])
         ->add('nbChildren',IntegerType::class, [
             'label'=> 'Dont Nombre d\'enfants',
-            'required' => false
+            'required' => false,
+            'attr' => [
+                'min' => 0,
+            ]
         ])
         ->add('date', DateType::class,[
             'label'=> 'Date souhaité',

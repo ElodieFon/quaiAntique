@@ -66,10 +66,16 @@ class ReservationController extends AbstractController
                 $rDate = $r->getDate()->format('d/m/Y'); 
                 $rTime = $r->getHeure();
                 $nbPersonsTotal += $r->getNbPersons();    
-                 
-            }    
-            if($rDate == $reservationDate && $rTime == $reservationTime && $reservationPersons > ($nbPlace - $nbPersonsTotal)){
-                $message = "Navré nous n'avons pas de disponibilitée à cette heure pour le moment!"; 
+                
+            }   
+
+            $nbPlaceDispo = $nbPlace - $nbPersonsTotal; 
+
+            if($reservationPersons > $nbPlace){
+                $message = "Navré votre demande dépace la capacité prévu pour cette tranche horaire"; 
+            }
+            elseif($rDate == $reservationDate && $rTime == $reservationTime && $reservationPersons > $nbPlaceDispo ){
+                $message = "Navré nous n'avons plus de disponibilitée à cette heure pour le moment!"; 
             }
             elseif ($reservationChildren > $reservationPersons){
                 $message = "Le nombre de place demandé ne peut etre inférieur au nombre de personne presentes à la table.
