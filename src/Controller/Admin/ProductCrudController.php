@@ -44,7 +44,7 @@ class ProductCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name','nom'),
-            TextareaField::new('description',\ENT_COMPAT | \ENT_HTML5),
+            TextareaField::new('description'),
             MoneyField::new('prix')->setCurrency('EUR'),
             ImageField::new('image')
             ->setBasePath(('images/products'))
