@@ -20,6 +20,12 @@ body .card img {
      object-fit: cover;
   border-radius: 0.5rem;
 }
+body .card .btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 body .card-body {
   background-color: #E3E7E4;
 }

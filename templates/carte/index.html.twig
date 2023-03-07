@@ -15,7 +15,7 @@
             <input name="tabs" type="radio" id="{{category.nom}}">
             <label for="{{category.nom}}" class="label">{{category.nom}}</label>
             <div class="panel m-auto">
-                <div class="d-flex flex-wrap align-items-center justify-c">
+                <div class="d-flex flex-wrap align-items-center justify-content-center">
                 {% for product in products %}
                 {% if category.nom == product.category and product.active == 1 %}
                     <div class="card m-3 d-flex col-5 flex-row">
