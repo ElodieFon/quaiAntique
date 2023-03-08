@@ -24,22 +24,20 @@
                 {% endif %}
  
             {{ form_start(form) }}
-            <div class="d-flex justify-content-evenly flex-wrap">
-                <div>
-                    {{ form_row(form.nameClient) }}
-                    {{ form_row(form.date) }}
-                    {{ form_row(form.heure) }}
-                </div>
-                <hr class="border border-2 border-dark  w-2" style="height: 100%;">
-                <div>
+            {{ form_row(form.nameClient) }}
+            <div class="d-flex justify-content-evenly flex-wrap flex-column">
+                <div class=" d-flex justify-content-evenly">
                     {{ form_row(form.nbPersons) }}
                     {{ form_row(form.nbChildren) }}
                 </div>
-
+                <div class=" d-flex justify-content-evenly"> 
+                    {{ form_row(form.date) }}
+                    {{ form_row(form.heure) }}
+                </div>
             </div>
             {{ form_row(form.comentaire) }}
             {{ form_row(form.allergie) }}
-                
+            
             {{ form_end(form) }}
         </div>
     </main>
