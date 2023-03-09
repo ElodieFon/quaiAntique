@@ -26,6 +26,35 @@ body li {
 body button, body .btn {
   text-transform: capitalize;
 }
+body .btn-success {
+  background-color: #637266;
+  border: 1px solid transparent;
+}
+body .btn-success:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid #637266;
+}
+body .btn-warning {
+  background-color: #bfa78f;
+  color: white;
+  border: 1px solid transparent;
+}
+body .btn-warning:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid #bfa78f;
+}
+body .btn-primary {
+  background-color: #bfa78f;
+  color: white;
+  border: 1px solid transparent;
+}
+body .btn-primary:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid #bfa78f;
+}
 
 main {
   min-height: 100vh;
@@ -35,6 +64,10 @@ main header {
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 main header h2, main header h3 {
   font-family: "Old Standard TT", serif;
@@ -44,11 +77,9 @@ main header h2, main header h3 {
 main header > div {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 20vh;
 }
 
 footer > div {

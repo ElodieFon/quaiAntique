@@ -11,6 +11,7 @@
     <main>
         
         {% include "base/header.html.twig" %} 
+        <a href="{{ path('app_carte') }}" class="btn btn-warning m-2 mt-4">Retourner à la carte</a>
         <div class="d-flex p-0 m-2 mt-4 bg-light">
             <div class="col-4 m-auto block-img">
                 <img src="/images/products/{{product.image}}" alt="{{product.name}}" style="width: 100%;"/>
