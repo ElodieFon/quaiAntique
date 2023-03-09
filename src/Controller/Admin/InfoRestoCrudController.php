@@ -9,7 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class InfoRestoCrudController extends AbstractCrudController
 {
@@ -30,7 +31,12 @@ class InfoRestoCrudController extends AbstractCrudController
             TextField::new('adresse'),
             TextField::new('cp'),
             TextField::new('ville'),
-            TextField::new('pays')
+            TextField::new('pays'),
+            ImageField::new('carte_url')
+            ->setBasePath(('images/maps'))
+            ->setUploadDir('public/images/maps')
+            ->setSortable(false),
+            TextField::new('lien_maps'),
         ];
     }
    

@@ -37,6 +37,12 @@ class InfoResto
     #[ORM\Column]
     private ?bool $active = null;
 
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $CarteUrl = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lienMaps = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +140,30 @@ class InfoResto
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getCarteUrl(): ?string
+    {
+        return $this->CarteUrl;
+    }
+
+    public function setCarteUrl(?string $CarteUrl): self
+    {
+        $this->CarteUrl = $CarteUrl;
+
+        return $this;
+    }
+
+    public function getLienMaps(): ?string
+    {
+        return $this->lienMaps;
+    }
+
+    public function setLienMaps(?string $lienMaps): self
+    {
+        $this->lienMaps = $lienMaps;
 
         return $this;
     }

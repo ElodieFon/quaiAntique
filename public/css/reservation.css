@@ -18,4 +18,10 @@ header {
   body header {
     background-image: none;
   }
+  .container-form {
+    width: 800px;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    border-radius: 0.5rem;
+  }
 }/*# sourceMappingURL=reservation.css.map */

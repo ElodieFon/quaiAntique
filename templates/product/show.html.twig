@@ -12,11 +12,11 @@
         
         {% include "base/header.html.twig" %} 
         <a href="{{ path('app_carte') }}" class="btn btn-warning m-2 mt-4">Retourner à la carte</a>
-        <div class="d-flex p-0 m-2 mt-4 bg-light">
-            <div class="col-4 m-auto block-img">
+        <div class="d-flex p-0 m-2 mt-4 bg-light flex-wrap">
+            <div class=" m-auto block-img">
                 <img src="/images/products/{{product.image}}" alt="{{product.name}}" style="width: 100%;"/>
             </div>
-            <div class="d-flex align-items-center justify-content-center flex-column col-4 bg-light m-auto">
+            <div class="d-flex align-items-center justify-content-center flex-column  bg-light m-auto mt-4">
                 <h2 class="mb-3 text-capitalize">{{product.name}}</h2>
                 <p> 
                     {{product.description}}

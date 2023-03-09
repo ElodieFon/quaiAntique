@@ -1,11 +1,11 @@
-<footer class="">
+<footer>
     
         <div class="d-flex  m-0 col-12">
           <div class="bg-light p-3   d-flex align-items-center justify-content-center flex-column">
             <h3>Ouverture</h3>
              <ul>
             {% for horaire in horaires %}
-                {% if horaire.active == 1 %}
+                {% if horaire.active == true %}
                 
                    <li>
                         <strong> {{horaire.jour }}</strong> : {{horaire.matinDebut | date('H:i')}}
@@ -26,7 +26,7 @@
             <div class="bg-dark text-light text-center p-3 d-flex align-items-center justify-content-center flex-column">
            
                 {% for inforesto in infosResto %}
-                {% if inforesto.active == 1 %}
+                {% if inforesto.active == true %}
                     <h3>{{inforesto.nom}}</h3>
                     <p> 
                         {{inforesto.adresse}} 
