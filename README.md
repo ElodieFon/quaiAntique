@@ -1,5 +1,7 @@
 # Le Quai Antique
 
+![logo](public/images/logo.png)
+
 ## " Ceci est une application Symfony destinée à une évaluation de compétance. Elle est basée sur le framework Symfony 6 et une version PHP 8.1 "
 
 ## Installer l'application
@@ -22,7 +24,7 @@
 
 `symfony server:start` ou
 
-`symfony server:start -d` si vous voulais reprendre directementy la main sur le terminal sans avoir a en changer.
+`symfony server:start -d` si vous voulais reprendre directement la main sur le terminal sans avoir à en changer.
 
 ### 5. Accédez à l'application en utilisant l'URL suivante
 
