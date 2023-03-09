@@ -1,5 +1,6 @@
 # Le Quai Antique
 
+
 <img src="public/images/logo.png" alt="Capture d'écran de mon application" width="60">
 
 ## " Ceci est une application Symfony destinée à une évaluation de compétance. Elle est basée sur le framework Symfony 6 et une version PHP 8.1 "
