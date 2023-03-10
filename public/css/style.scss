@@ -87,6 +87,22 @@ main{
           
     }
 }
+nav {
+    .active {
+        border: 1px solid white; 
+    }
+    .show , .collapsing{
+        display: flex;
+        align-items: flex-end;
+        justify-content:flex-end;
+        ul{ 
+            background-color: #637266;  
+            max-width: 50vw;
+            padding: 1rem;
+           
+        }
+    }
+}  
 footer {
     >div {     
         flex-wrap: wrap; 
@@ -97,7 +113,8 @@ footer {
 }
 
 @media screen and (min-width : 900px) {
-    body{   
+    body{ 
+
         .main{
            
             header {

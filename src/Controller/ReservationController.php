@@ -31,20 +31,16 @@ class ReservationController extends AbstractController
         MailerInterface $mailer
     ): Response
     {   
-
         $titlePage = "Reservation";
         $subtitle = "";
-
         $infosResto = $infoResto->findAll();
         $horaires = $horaire->findAll();
-
         $reservation = new Reservation(); 
         $reservation->setUser($user); 
         $reservationDate = "";
         $rDate = "";
         $message = "";
         $messageSuccess= "";
-
         $form = $this-> createForm(ReservationType::class , $reservation, ['user' => $user]);
 		$form->handleRequest($request);
 
@@ -57,18 +53,15 @@ class ReservationController extends AbstractController
             $reservationChildren = $reservation->getNbChildren();
             $reservationPersons = $reservation->getNbPersons();
             $nbPersonsTotal = 0;
-            $nbPlace = $reservationTime->getNbplace();
-          
+            $nbPlace = $reservationTime->getNbplace();       
             $mailUser = $reservation->getUser()->getEmail();
             $messageSuccess = "Votre reservation pour le $reservationDate à $reservationTime a bien été enregistrée !"; 
            
             foreach ($reservations as $r) {   
                 $rDate = $r->getDate()->format('d/m/Y'); 
                 $rTime = $r->getHeure();
-                $nbPersonsTotal += $r->getNbPersons();    
-                
+                $nbPersonsTotal += $r->getNbPersons();           
             }   
-
             $nbPlaceDispo = $nbPlace - $nbPersonsTotal; 
 
             if($reservationPersons > $nbPlace){
@@ -92,8 +85,7 @@ class ReservationController extends AbstractController
                 ->subject('Confirmation de reservation')
                 ->text($messageSuccess);
                 $mailer->send($email);
-            }       
-           
+            }              
 		}
         return $this->render('reservation/index.html.twig', [
             'infosResto'=>$infosResto,
@@ -103,8 +95,6 @@ class ReservationController extends AbstractController
             'form' => $form->createView(),
             'messageSuccess' => $messageSuccess,
 			'message' => $message,
-        ]);
-        
+        ]);  
     }
-   
 }

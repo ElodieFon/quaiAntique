@@ -11,14 +11,14 @@
     <main>
         
         {% include "base/header.html.twig" %} 
-        <a href="{{ path('app_carte') }}" class="btn btn-warning m-2 mt-4">Retourner à la carte</a>
-        <div class="d-flex p-0 m-2 mt-4 bg-light flex-wrap">
+        <a href="{{ path('app_carte') }}" class="btn btn-warning m-3">Retourner à la carte</a>
+        <div class="d-flex p-0 m-4 bg-light flex-wrap  container-single">
             <div class=" m-auto block-img">
-                <img src="/images/products/{{product.image}}" alt="{{product.name}}" style="width: 100%;"/>
+                <img src="/images/products/{{product.image}}" alt="{{product.name}}" style="width: 100%; max-width : 800px"/>
             </div>
-            <div class="d-flex align-items-center justify-content-center flex-column  bg-light m-auto mt-4">
-                <h2 class="mb-3 text-capitalize">{{product.name}}</h2>
-                <p> 
+            <div class="d-flex align-items-center justify-content-center flex-column bg-light m-auto">
+                <h2 class="p-2 text-capitalize">{{product.name}}</h2>
+                <p class="p-4"> 
                     {{product.description}}
                 </p>
                 <span class="text-danger fs-2">{{product.prix / 100}} €</span>
