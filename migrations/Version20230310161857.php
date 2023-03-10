@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230306142159 extends AbstractMigration
+final class Version20230310161857 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -23,8 +23,7 @@ final class Version20230306142159 extends AbstractMigration
         $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(500) NOT NULL, description LONGTEXT NOT NULL, image VARCHAR(255) NOT NULL, inverse TINYINT(1) DEFAULT NULL, active TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE category (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, active TINYINT(1) NOT NULL, updated_at DATETIME DEFAULT NULL, created_at DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE horaire (id INT AUTO_INCREMENT NOT NULL, jour VARCHAR(50) NOT NULL, matin_debut TIME NOT NULL, matin_fin TIME NOT NULL, aprem_debut TIME NOT NULL, aprem_fin TIME NOT NULL, active TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE horaire_reservation (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE info_resto (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, telephone VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, adresse VARCHAR(500) NOT NULL, cp VARCHAR(20) NOT NULL, ville VARCHAR(255) NOT NULL, pays VARCHAR(255) NOT NULL, active TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE info_resto (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, telephone VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, adresse VARCHAR(500) NOT NULL, cp VARCHAR(20) NOT NULL, ville VARCHAR(255) NOT NULL, pays VARCHAR(255) NOT NULL, active TINYINT(1) NOT NULL, carte_url VARCHAR(500) DEFAULT NULL, lien_maps VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE product (id INT AUTO_INCREMENT NOT NULL, category_id INT NOT NULL, name VARCHAR(255) NOT NULL, description LONGTEXT NOT NULL, prix NUMERIC(10, 2) NOT NULL, image VARCHAR(255) DEFAULT NULL, updated_at DATETIME DEFAULT NULL, active TINYINT(1) NOT NULL, created_at DATETIME NOT NULL, product_of_moment TINYINT(1) DEFAULT NULL, INDEX IDX_D34A04AD12469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE reservation (id INT AUTO_INCREMENT NOT NULL, heure_id INT DEFAULT NULL, user_id INT DEFAULT NULL, name_client VARCHAR(255) NOT NULL, date DATETIME NOT NULL, nb_persons INT NOT NULL, nb_children INT DEFAULT NULL, comentaire LONGTEXT DEFAULT NULL, allergie TINYINT(1) DEFAULT NULL, INDEX IDX_42C84955F2A733EB (heure_id), INDEX IDX_42C84955A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE reservation_horaire (id INT AUTO_INCREMENT NOT NULL, heure TIME NOT NULL, active TINYINT(1) NOT NULL, nb_place INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
@@ -44,7 +43,6 @@ final class Version20230306142159 extends AbstractMigration
         $this->addSql('DROP TABLE article');
         $this->addSql('DROP TABLE category');
         $this->addSql('DROP TABLE horaire');
-        $this->addSql('DROP TABLE horaire_reservation');
         $this->addSql('DROP TABLE info_resto');
         $this->addSql('DROP TABLE product');
         $this->addSql('DROP TABLE reservation');
