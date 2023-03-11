@@ -1,4 +1,4 @@
-
+-- ce fichier est un outil pour inserer quelque donées dans la bdd
 
 INSERT INTO `article` (`id`, `name`, `description`, `image`, `inverse`, `active`) VALUES
 (1, 'Histoire', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, alias accusantium aliquam nostrum sint ipsum, enim dignissimos exercitationem perferendis voluptatem ullam nam maiores accusamus reiciendis aut laboriosam maxime corporis, hic illum quas beatae amet quasi quibusdam magnam. Atque, ullam. Excepturi facilis cum, praesentium temporibus doloremque fuga tempora quidem asperiores! Aspernatur!', 'chetan-hireholi-WOQCwfnlhcs-unsplash.jpg', 0, 1),
@@ -69,6 +69,6 @@ INSERT INTO `reservation_horaire` (`id`, `heure`, `active`, `nb_place`) VALUES
 (22, '22:00:00', 1, 10);
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `is_verified`, `name`) VALUES
-(1, 'Admin@hotmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$LckVhlPn37j3t6gzQYTP.ecSMkGyKdPwy8ne07AqhF9wXC0Vo7S56', 0, 'Admin');
+(1, 'Admin@hotmail.com', '["ROLE_ADMIN"]', '$2y$13$LckVhlPn37j3t6gzQYTP.ecSMkGyKdPwy8ne07AqhF9wXC0Vo7S56', 0, 'Admin');
 
 
