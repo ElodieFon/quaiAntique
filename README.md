@@ -14,7 +14,7 @@
 
 ### 3. Configurer la base de donnée avec les comandes
 
-(n'oubliez pas de configurer le .env pour votre propre bdd)
+(n'oubliez pas de configurer le .env pour votre propre bdd et votre smtp(pour l'envoie de mail))
 
 `php bin/console doctrine:database:create`
 
@@ -34,7 +34,7 @@
 
 ### 6. création d’un administrateur
 
-creer un utilsateur depui l'interface de l'aplication (inscription) modifier l'atribut roles depui la base de donnée [] => ["ROLE_ADMIN"]
+créer un utilisateur depui l'interface de l'aplication (inscription) modifier l'atribut roles depui la base de donnée [] => ["ROLE_ADMIN"]
 pour accéder au tableau de bord ajouter /admin à l'url
 
 ## le Theme donée
