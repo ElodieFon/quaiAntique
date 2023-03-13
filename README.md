@@ -12,7 +12,9 @@
 
 `composer install`
 
-### 3. Configurer la base de donnée avec les comande
+### 3. Configurer la base de donnée avec les comandes
+
+(n'oubliez pas de configurer le .env pour votre propre bdd)
 
 `php bin/console doctrine:database:create`
 
