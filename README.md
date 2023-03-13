@@ -20,6 +20,8 @@
 
 `php bin/console doctrine:migrations:migrate`
 
+: lancer les commande de l'étape  si dessou ,
+
 ### 4. Lancer le serveur avec la comande
 
 `symfony server:start` ou
@@ -29,6 +31,11 @@
 ### 5. Accédez à l'application en utilisant l'URL suivante
 
 `http://localhost:8000`
+
+### 6. création d’un administrateur
+
+creer un utilsateur depui l'interface de l'aplication (inscription) modifier l'atribut roles depui la base de donnée [] => ["ROLE_ADMIN"]
+pour accéder au tableau de bord ajouter /admin à l'url
 
 ## le Theme donée
 
