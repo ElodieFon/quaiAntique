@@ -2,23 +2,12 @@
 
 -- table article 
 
--- table article 
 INSERT INTO `article` (`id`, `name`, `description`, `image`, `inverse`, `active`) VALUES
 (1, 'Histoire', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, alias accusantium aliquam nostrum sint ipsum, enim dignissimos exercitationem perferendis voluptatem ullam nam maiores accusamus reiciendis aut laboriosam maxime corporis, hic illum quas beatae amet quasi quibusdam magnam. Atque, ullam. Excepturi facilis cum, praesentium temporibus doloremque fuga tempora quidem asperiores! Aspernatur!', 'chetan-hireholi-WOQCwfnlhcs-unsplash.jpg', 0, 1),
 (2, 'Notre cuisine', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, alias accusantium aliquam nostrum sint ipsum, enim dignissimos exercitationem perferendis voluptatem ullam nam maiores accusamus reiciendis aut laboriosam maxime corporis, hic illum quas beatae amet quasi quibusdam magnam. Atque, ullam. Excepturi facilis cum, praesentium temporibus doloremque fuga tempora quidem asperiores! Aspernatur!', 'pylyp-sukhenko-y-XZf_TNRms-unsplash (1).jpg', 1, 1),
 (3, 'Notre chef', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, alias accusantium aliquam nostrum sint ipsum, enim dignissimos exercitationem perferendis voluptatem ullam nam maiores accusamus reiciendis aut laboriosam maxime corporis, hic illum quas beatae amet quasi quibusdam magnam. Atque, ullam. Excepturi facilis cum, praesentium temporibus doloremque fuga tempora quidem asperiores! Aspernatur!', 'redcharlie-redcharlie1-t-7KEq9M0b0-unsplash.jpg', 0, 1);
 
-
-INSERT INTO `category` (`id`, `nom`, `active`, `updated_at`, `created_at`) VALUES
-(1, 'Entrées', 1, NULL, '2023-03-07 13:06:02'),
-(2, 'Plats', 1, NULL, '2023-03-07 13:06:13'),
-(3, 'Desserts', 1, NULL, '2023-03-07 13:06:23'),
-(4, 'Goutés', 0, NULL, '2023-03-07 13:06:43');
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20230306142159', '2023-03-06 14:22:05', 380),
-('DoctrineMigrations\\Version20230309112157', '2023-03-09 11:22:13', 175),
-('DoctrineMigrations\\Version20230309115531', '2023-03-09 11:55:35', 87);
+-- table horaire
 
 INSERT INTO `horaire` (`id`, `jour`, `matin_debut`, `matin_fin`, `aprem_debut`, `aprem_fin`, `active`) VALUES
 (1, 'Lundi', '11:30:00', '14:00:00', '19:30:00', '20:00:00', 1),
@@ -31,9 +20,18 @@ INSERT INTO `horaire` (`id`, `jour`, `matin_debut`, `matin_fin`, `aprem_debut`, 
 
 -- table info resto
 
--- table info resto
 INSERT INTO `info_resto` (`id`, `nom`, `telephone`, `email`, `adresse`, `cp`, `ville`, `pays`, `active`, `carte_url`, `lien_maps`) VALUES
-(1, 'Le Quai Antique', '0401123334', 'le.quai.antique@hotmail.com', '99 rue Croix d\'or', '73000', 'Chambéry', 'France', 1, 'carte maps.png', 'https://goo.gl/maps/ys2fKRRxdWgEYJLaA');
+(1, 'Le Quai Antique', '0401123334', "le.quai.antique@hotmail.com', '99 rue Croix d'or", '73000', 'Chambéry', 'France', 1, 'carte maps.png', 'https://goo.gl/maps/ys2fKRRxdWgEYJLaA');
+
+-- table catégorie
+
+INSERT INTO `category` (`id`, `nom`, `active`, `updated_at`, `created_at`) VALUES
+(1, 'Entrées', 1, NULL, '2023-03-07 13:06:02'),
+(2, 'Plats', 1, NULL, '2023-03-07 13:06:13'),
+(3, 'Desserts', 1, NULL, '2023-03-07 13:06:23'),
+(4, 'Goutés', 0, NULL, '2023-03-07 13:06:43');
+
+-- table product
 
 INSERT INTO `product` (`id`, `category_id`, `name`, `description`, `prix`, `image`, `updated_at`, `active`, `created_at`, `product_of_moment`) VALUES
 (1, 3, 'crepes suzette', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci eveniet consectetur illum labore excepturi eos libero nemo impedit unde quibusdam dolorem pariatur, fuga autem ea, nobis numquam! Dolores delectus ducimus tenetur provident sapiente minima dolorum quod nostrum quo corrupti ipsam, rerum, laboriosam, soluta facere ad optio blanditiis! Cupiditate, nisi debitis!', '250.00', 'joyful-vT5xrj3z1OE-unsplash.jpg', NULL, 1, '2023-03-07 13:07:11', 1),
@@ -82,3 +80,4 @@ INSERT INTO `reservation` (`id`, `heure_id`, `user_id`, `name_client`, `date`, `
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `is_verified`, `name`) VALUES
 (1, 'Admin@hotmail.com', '["ROLE_ADMIN"]', '$2y$13$LckVhlPn37j3t6gzQYTP.ecSMkGyKdPwy8ne07AqhF9wXC0Vo7S56', 0, 'Admin');
+-- mdp = 123456
