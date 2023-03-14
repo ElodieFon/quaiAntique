@@ -20,8 +20,6 @@
 
 `php bin/console doctrine:migrations:migrate`
 
-: lancer les commande de l'étape  si dessou ,
-
 ### 4. Lancer le serveur avec la comande
 
 `symfony server:start` ou
